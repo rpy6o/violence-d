@@ -251,3 +251,30 @@ task.spawn(function()
 		end
 	end
 end)
+
+-------
+local Workspace = game:GetService("Workspace")
+
+-- Ждем, пока Lobby и Pumpkin3 появятся в игре (на всякий случай)
+local lobby = Workspace:WaitForChild("Lobby", 10)
+if lobby then
+	local pumpkin = lobby:WaitForChild("Pumpkin3", 10)
+	if pumpkin then
+		local shell = pumpkin:WaitForChild("shell", 5)
+		local inside = pumpkin:WaitForChild("inside", 5)
+		
+		if shell then
+			shell.Transparency = 1
+			print("shell стал прозрачным")
+		end
+		
+		if inside then
+			inside.Transparency = 1
+			print("inside стал прозрачным")
+		end
+	else
+		print("Pumpkin3 не найден!")
+	end
+else
+	print("Lobby не найден!")
+end
